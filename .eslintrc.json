@@ -1,0 +1,22 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "extends": ["airbnb-typescript"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType":  "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "require-jsdoc": ["off"],
+    "camelcase": ["off"],
+    "max-len": ["off"],
+    "no-underscore-dangle": ["off"],
+    "import/prefer-default-export": ["off"],
+    "no-await-in-loop": ["off"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": { "mocha": true, "webextensions": true, "browser": true }
+}

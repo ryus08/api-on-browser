@@ -1,0 +1,28 @@
+{
+  "name": "Api on Browser",
+  "version": "0.0.1",
+  "description": "Provides a browser extension for navigating APIs like normal web navigation",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "init.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/api_512.png",
+      "32": "/images/api_512.png",
+      "48": "/images/api_512.png",
+      "128": "/images/api_512.png"
+    }
+  },  
+  "icons": {
+    "16": "/images/api_512.png",
+    "32": "/images/api_512.png",
+    "48": "/images/api_512.png",
+    "128": "/images/api_512.png"
+  }, 
+  "options_page": "options.html",
+  "manifest_version": 3
+}

@@ -1,0 +1,36 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Note, you need to close any running chrome for this to load
+      // Everything seems debuggable, even the service worker, but I'm not sure when the service worker actually runs
+      // The Extension popup and options need to be loaded in the main browser, not in the popup to debug though
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "https://google.com",
+      // "url": "chrome-extension://dfeegclddejcpocggningglpdipajlhb/options.html", // Doesn't seem to want to load urls like this on start, so you'll need to navigate here manually if you want to hit it
+      "webRoot": "${workspaceFolder}",
+      // "runtimeArgs": ["--load-extension=${workspaceFolder}/dist"],
+      "userDataDir": false
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 9222, // Ensure Chrome is running with a debugger open with: `chrome.exe --remote-debugging-port=9222`
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Current",
+      "program": "${workspaceFolder}/${file}",
+      "runtimeArgs": ["--loader", "ts-node/esm", "--experimental-specifier-resolution=node"],
+      "console": "externalTerminal"
+    }
+  ]
+}
