@@ -12,7 +12,7 @@
       "request": "launch",
       "type": "pwa-chrome",
       "url": "https://google.com",
-      // "url": "chrome-extension://chromeExtentionIdentifier/options.html", // Doesn't seem to want to load urls like this on start, so you'll need to navigate here manually if you want to hit it
+      // "url": "chrome-extension://dfeegclddejcpocggningglpdipajlhb/options.html", // Doesn't seem to want to load urls like this on start, so you'll need to navigate here manually if you want to hit it
       "webRoot": "${workspaceFolder}",
       // "runtimeArgs": ["--load-extension=${workspaceFolder}/dist"],
       "userDataDir": false
