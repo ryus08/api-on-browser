@@ -1,0 +1,50 @@
+{
+  "name": "api-on-browser",
+  "version": "1.0.0",
+  "description": "Provides a browser extension for navigating APIs like normal web navigation",
+  "main": "src/init.js",
+  "type": "module",
+  "scripts": {
+    "start": "webpack --watch --mode=development",
+    "build": "webpack --mode=production",
+    "prebuild": "npm run lint",
+    "prebuildDev": "npm run lint -- --fix --cache",
+    "clean": "rimraf ./node_modules ./dist",
+    "lint": "node node_modules/eslint/bin/eslint.js ./src --ext .js,.jsx,.tsx,.ts",
+    "buildDev": "webpack --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyze": "npm run build -- --devtool=source-map && source-map-explorer 'dist/*.js'"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/chrome": "^0.0.154",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^5.2.6",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "source-map-explorer": "^2.5.2",
+    "style-loader": "^3.0.0",
+    "ts-loader": "^9.2.5",
+    "ts-node": "^10.6.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
+    "path-browserify": "^1.0.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2"
+  }
+}
