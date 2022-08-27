@@ -37,19 +37,15 @@ class Rule extends React.Component<RuleProps, RuleState> {
           <Form onSubmit={(e) => this.updateRule(e)}>
             <Row>
               <Col>
-                <Form.Control placeholder="Domain" value={rule.domain} onChange={(e) => this.setState({ rule: { ...rule, domain: e.target.value } })} />
+                <Form.Control placeholder="Domain" value={rule.urlFilter} onChange={(e) => this.setState({ rule: { ...rule, urlFilter: e.target.value } })} />
               </Col>
               <Col>
                 <Form.Control placeholder="AuthStrategy" value={rule.authStrategy} onChange={(e) => this.setState({ rule: { ...rule, authStrategy: e.target.value } })} />
               </Col>
             </Row>
-            <Button variant="primary" type="submit">
-              Save
-            </Button>
-          </Form>
-          <Card.Footer>
+            <Button variant="primary" type="submit">Save</Button>
             <Button type="button" className="run" aria-label="Run" onClick={() => removeRule()}>Delete</Button>
-          </Card.Footer>
+          </Form>
         </Card.Body>
       </Card>
     );

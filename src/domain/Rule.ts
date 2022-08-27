@@ -1,5 +1,5 @@
 export type Rule = {
-  domain: string,
+  urlFilter: string,
   authStrategy: string,
   id: number,
 };

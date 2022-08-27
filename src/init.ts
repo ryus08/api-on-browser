@@ -9,29 +9,26 @@ chrome.runtime.onInstalled.addListener(() => {});
 
 chrome.storage.onChanged.addListener((changes: { [storageKey: string]: chrome.storage.StorageChange }, area: chrome.storage.AreaName) => {
   if (area === 'local' && changes.rules) {
-    const updatedRule: Rule = changes.rules.newValue[0];
-    console.log(updatedRule);
-    const addRules = [];
-    if (updatedRule.authStrategy !== 'rm') {
-      addRules.push({
-        id: updatedRule.id,
-        priority: 1,
-        action: {
-          requestHeaders: [{
-            operation: chrome.declarativeNetRequest.HeaderOperation.SET,
-            value: updatedRule.authStrategy,
-            header: 'Authorization',
-          }],
-          type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-        },
-        condition: {
-          urlFilter: updatedRule.domain, resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME], // TODO: change the storage key name from domain
-        },
-      });
-    }
+    const rules: Rule[] = changes.rules.newValue;
+    const oldRules: Rule[] = changes.rules.oldValue || [];
+    const addRules = rules.filter((rule) => (rule.authStrategy && rule.urlFilter)).map((rule: Rule) => ({
+      id: rule.id,
+      priority: 1,
+      action: {
+        requestHeaders: [{
+          operation: chrome.declarativeNetRequest.HeaderOperation.SET,
+          value: rule.authStrategy,
+          header: 'Authorization',
+        }],
+        type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+      },
+      condition: {
+        urlFilter: rule.urlFilter, resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME], // TODO: change the storage key name from domain
+      },
+    }));
     chrome.declarativeNetRequest.updateSessionRules({
       addRules,
-      removeRuleIds: [updatedRule.id],
+      removeRuleIds: oldRules.map((x) => x.id),
     }, () => {
       if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError);
