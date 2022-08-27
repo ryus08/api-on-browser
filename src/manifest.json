@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "Provides a browser extension for navigating APIs like normal web navigation",
   "permissions": [
-    "storage"
+    "storage",
+    "declarativeNetRequestWithHostAccess",
+    "activeTab"
+  ],
+  "host_permissions":[
+    "*://*.example.com/*"
   ],
   "background": {
     "service_worker": "init.js"
