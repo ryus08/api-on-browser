@@ -8,7 +8,7 @@
     "activeTab"
   ],
   "host_permissions":[
-    "*://*.example.com/*"
+    "https://*/*"
   ],
   "background": {
     "service_worker": "init.js"
